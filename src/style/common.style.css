@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --vh: 100%;
+}
+
+p {
+    margin-bottom: 0;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    color: #465FAB;
+    text-decoration: none;
+}
+
+body {
+    font-family: "Montserrat" !important;
+}
+
+.ml-1 {
+    margin-left: 10px !important;
+}
+
+.ml-2 {
+    margin-left: 20px !important;
+}
+
+.ml-3 {
+    margin-left: 30px !important;
+}
+
+.mr-1 {
+    margin-right: 10px !important;
+}
+
+.mr-2 {
+    margin-right: 20px !important;
+}
+
+.mr-3 {
+    margin-right: 30px !important;
+}
+
+.mb-1 {
+    margin-bottom: 10px !important;
+}
+
+.mb-2 {
+    margin-bottom: 20px !important;
+}
+
+.mb-3 {
+    margin-bottom: 30px !important;
+}
+
+.mt-1 {
+    margin-top: 10px !important;
+}
+
+.mt-2 {
+    margin-top: 20px !important;
+}
+
+.mt-3 {
+    margin-top: 30px !important;
+}
+
+.display-none {
+    display: none;
+}
+
+.display-flex {
+    display: flex;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+
+.display-center {
+    display: flex;
+    justify-content: center;
+}
+
+.display-space-between {
+    display: flex;
+    justify-content: space-between;
+}
+
+.display-center-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.gap-10 {
+    gap: 10px;
+}
+
+.gap-20 {
+    gap: 20px;
+}
+
+.gap-30 {
+    gap: 30px;
+}
+
+.overflow-x {
+    overflow-x: auto;
+    width: 100%;
+}
+
+.blue-btn,
+.white-btn {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.blue-btn {
+    background-color: #465FAB;
+    color: #fff;
+    border: none;
+}
+
+.white-btn {
+    background-color: #fff;
+    border: 1px solid #465FAB !important;
+    color: #465FAB !important;
+}
+
+.blue {
+    color: #465FAB;
+}
+
+.cur-point {
+    cursor: pointer;
+}
+
+
+
