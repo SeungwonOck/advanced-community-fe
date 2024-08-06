@@ -133,8 +133,13 @@ body {
 
 .white-btn {
     background-color: #fff;
-    border: 1px solid #465FAB !important;
-    color: #465FAB !important;
+    border: 1px solid #465FAB;
+    color: #465FAB;
+}
+
+.white-btn:hover {
+    background-color: #465FAB;
+    color: #fff;
 }
 
 .blue {

@@ -15,7 +15,7 @@ const Navbar = () => {
                     Home
                 </div>
 
-                <div onClick={() => navigate("/login")} className="nav-icon blue-btn cur-point">
+                <div onClick={() => navigate("/login")} className="nav-icon white-btn cur-point">
                     Sign In
                 </div>
             </div>
