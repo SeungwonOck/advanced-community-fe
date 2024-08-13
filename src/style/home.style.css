@@ -1,0 +1,19 @@
+.home-banner {
+  background-color: #f8f9fa;
+  max-width: 1400px;
+  align-items: center;
+  padding: 150px 0;
+  margin: 0 auto;
+  margin-bottom: 30px;
+  border-bottom: 2px solid #eee;
+}
+
+.home-banner h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.home-banner p {
+  font-size: 1.25rem;
+  color: #6c757d;
+}

@@ -146,6 +146,10 @@ body {
     color: #465FAB;
 }
 
+.red {
+    background-color: #EB5757 !important;
+}
+
 .cur-point {
     cursor: pointer;
 }

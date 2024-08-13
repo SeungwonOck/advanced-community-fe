@@ -4,6 +4,7 @@ import Home from "../page/Home"
 import Campaign from "../page/CampaignDetail"
 import Login from "../page/Login"
 import Register from "../page/Register"
+import PasswordVerify from '../page/PasswordVerify';
 
 const AppRouter = () => {
     return (
@@ -12,6 +13,7 @@ const AppRouter = () => {
             <Route path="/campaign/:id" element={<Campaign />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/password/verify" element={<PasswordVerify />} />
         </Routes>
     )
 }

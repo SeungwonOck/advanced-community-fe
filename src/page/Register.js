@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import "../style/login.style.css"
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import { Container, Form, Button, Alert } from 'react-bootstrap'
 
 
@@ -108,19 +108,13 @@ const Register = () => {
                 </Form.Control.Feedback>
               </Form.Group>
               <Form.Group className="mb-3">
-                <Form.Label>Gender<a style={{ color: "#28A745" }}>*</a></Form.Label>
-                <Form.Select
-                  defaultValue=""
+              <Form.Check
+                  type="checkbox"
+                  label="Business - Application as a business"
+                  id="business"
                   onChange={handleChange}
-                  id="gender"
-                  required
-                >
-                  <option value="" disabled hidden>
-                    Choose gender
-                  </option>
-                  <option value="male">Male</option>
-                  <option value="female">Female</option>
-                </Form.Select>
+                  checked={formData.business}
+                />
               </Form.Group>
               <Form.Group className="mb-3">
                 <Form.Check
@@ -136,8 +130,13 @@ const Register = () => {
                 <Button className="login-button" type="submit">
                   Register
                 </Button>
-              </div>
-            </Form>
+          </div>
+          
+          <div className="login-footer">
+            <span>Already have an account? </span>
+            <Link to="/login">Log in</Link>
+          </div>
+        </Form>
       </Container>
     </div>
   )
