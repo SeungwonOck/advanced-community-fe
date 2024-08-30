@@ -1,28 +1,40 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "../style/login.style.css"
 import { useNavigate, Link } from 'react-router-dom'
 import { Container, Form, Button, Alert } from 'react-bootstrap'
+import { useDispatch, useSelector } from 'react-redux'
+import { userActions } from '../action/userAction'
 
 
 const Register = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
-    userName: "",
-    password: "",
-    confirmPassword: "",
-    gender: "",
+    username: "",
+    password_1: "",
+    password_2: "",
+    role: 1,
     policy: false,  
   })
+
+  console.log("FormData", formData)
   
   const [passwordError, setPasswordError] = useState("");
   const [policyError, setPolicyError] = useState(false);
+  const { error } = useSelector((state) => state.user);
+
+  useEffect(() => {
+    return () => {
+      dispatch(userActions.clearError());
+    }
+  }, [dispatch])
 
   const register = (event) => {
     event.preventDefault();
-    const { userName, email, password, confirmPassword, gender, policy, nickName } = formData;
+    const { email, username, password_1, password_2, role, policy} = formData;
 
-    if (password !== confirmPassword) {
+    if (password_1 !== password_2) {
       setPasswordError("Password is incorrect");
       return;
     }
@@ -40,6 +52,7 @@ const Register = () => {
 
     setPasswordError("");
     setPolicyError(false);
+    dispatch(userActions.register({ email, username, password_1, password_2, role}, navigate))
   };
 
   const handleChange = (event) => {
@@ -47,6 +60,8 @@ const Register = () => {
 
     if (id === "policy") {
       setFormData({ ...formData, [id]: checked });
+    } else if (id === "role") {
+      setFormData({...formData, [id]: checked ? 2 : 1 });
     }
     else {
       setFormData({ ...formData, [id]: value });
@@ -75,7 +90,7 @@ const Register = () => {
                 <Form.Control
                   className="login-form-input"
                   type="text"
-                  id="userName"
+                  id="username"
                   placeholder="ex)Alex"
                   onChange={handleChange}
                   required
@@ -86,7 +101,7 @@ const Register = () => {
                 <Form.Control
                   className="login-form-input"
                   type="password"
-                  id="password"
+                  id="password_1"
                   placeholder="Please enter your password"
                   onChange={handleChange}
                   required
@@ -97,7 +112,7 @@ const Register = () => {
                 <Form.Control
                   className="login-form-input"
                   type="password"
-                  id="confirmPassword"
+                  id="password_2"
                   placeholder="Please re-enter your password"
                   onChange={handleChange}
                   required
@@ -111,9 +126,9 @@ const Register = () => {
               <Form.Check
                   type="checkbox"
                   label="Business - Application as a business"
-                  id="business"
+                  id="role"
                   onChange={handleChange}
-                  checked={formData.business}
+                  checked={formData.role === 2}
                 />
               </Form.Group>
               <Form.Group className="mb-3">

@@ -26,3 +26,15 @@
   justify-content: center;
   font-size: 0.8rem;
 }
+
+.card-footer .text-danger {
+  color: #dc3545 !important;
+}
+
+.card-footer .me-1 {
+  margin-right: 0.5rem;
+}
+
+.card-footer .me-4 {
+  margin-right: 0.75rem;
+}

@@ -1,5 +1,8 @@
 import React from 'react'
 import { Card, Badge } from 'react-bootstrap'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHeart } from '@fortawesome/free-solid-svg-icons'
+import { faComment } from '@fortawesome/free-regular-svg-icons'
 import "../style/campaignCard.style.css"
 
 const CampaignCard = () => {
@@ -23,8 +26,14 @@ const CampaignCard = () => {
         </Card.Text>
       </Card.Body>
       <Card.Footer className="text-muted d-flex">
-        <span className="mr-1">❤️ 123</span>
-        <span>💬 123</span>
+        <div>
+          <FontAwesomeIcon icon={faHeart} className="text-danger me-1" /> 
+          <span className="me-4">123</span> 
+        </div>
+        <div>
+          <FontAwesomeIcon icon={faComment} className="me-1"/> 
+          <span className="me-4">123</span>
+        </div>
       </Card.Footer>
     </Card>
   )
