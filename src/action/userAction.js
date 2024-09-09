@@ -5,12 +5,18 @@ import { commonUiActions } from "./commonUiAction";
 const loginWithToken = () => async (dispatch) => {
   try {
     dispatch({ type: types.TOKEN_LOGIN_REQUEST })
-    const res = await api.get('/user');
+
+    const token = sessionStorage.getItem("token");
+    const res = await api.get('/user/token/authentication', {
+      headers: {
+        token: `${token}`,
+      },
+    });
     if (res.status !== 200) {
       throw new Error('Invalid token');
     }
     else {
-      dispatch({ type: types.TOKEN_LOGIN_SUCCESS, payload: res.data.data })
+      dispatch({ type: types.TOKEN_LOGIN_SUCCESS, payload: res.data })
     }
 
   } catch (error) {
@@ -23,7 +29,6 @@ const loginWithEmail = ({ email, password }) => async (dispatch) => {
   try {
     dispatch({ type: types.LOGIN_REQUEST })
     const res = await api.post('/user/login', { email, password })
-    console.log("response:", res)
     if (res.status !== 200) {
       throw new Error(res.error)
     }
@@ -83,15 +88,15 @@ const updateUser = (userFormData) => async (dispatch) => {
   }
 };
 
-const forgetPassword = (nickName, userName, email) => async (dispatch) => {
+const forgetPassword = (email) => async (dispatch) => {
     try {
         dispatch({ type: types.FORGET_PASSWORD_REQUEST })
-        const res =  await api.post('/user/forgetpassword', { nickName, userName, email });
+        const res =  await api.post('/user/forgetpassword', { email });
         if (res.status !== 200) {
           throw new Error(res.error)
         } else {
           dispatch({ type: types.FORGET_PASSWORD_SUCCESS, payload: res.data.data })
-          dispatch(commonUiActions.showToastMessage('새로 변경할 비밀번호를 입력해주세요', 'success'))
+          dispatch(commonUiActions.showToastMessage('Reset Code Sent to Your Email!', 'success'))
         }
     } catch (error) {
         dispatch({ type: types.FORGET_PASSWORD_FAIL })
@@ -107,13 +112,12 @@ const setNewPassword = (userId, password, navigate) => async (dispatch) => {
           throw new Error(res.error)
         } else {
           dispatch({ type: types.SET_PASSWORD_WHEN_FORGET_SUCCESS });
-          dispatch(commonUiActions.showToastMessage('비밀번호가 변경되었습니다', 'success'));
+          dispatch(commonUiActions.showToastMessage("Password Changed!", "success"));
           navigate('/login');
-          dispatch({ type: types.SET_FIND_USER, payload: null })
         }
     } catch (error) {
         dispatch({ type: types.SET_PASSWORD_WHEN_FORGET_FAIL });
-        dispatch(commonUiActions.showToastMessage(error.message, 'error'));
+        dispatch(commonUiActions.showToastMessage(error.message, "error"));
     }
 }
 

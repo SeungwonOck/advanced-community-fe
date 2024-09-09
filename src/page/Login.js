@@ -23,7 +23,7 @@ const Login = () => {
         return () => {
             dispatch(userActions.clearError())
         }
-    }, dispatch)
+    }, [dispatch])
 
     const loginWithEmail = (event) => {
         event.preventDefault();

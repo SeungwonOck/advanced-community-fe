@@ -1,0 +1,55 @@
+.campaign-container {
+  width: 100%;
+}
+
+.campaign-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  flex-wrap: wrap;
+}
+
+.campaign-header h1 {
+  font-size: 2rem;
+  flex-grow: 1;
+}
+
+.campaign-header-btns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.form-container {
+  padding: 20px;
+}
+
+.upload-image {
+  max-width: 458px;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .campaign-header {
+    align-items: center;
+    padding: 10px;
+  }
+
+  .campaign-header h1 {
+    font-size: 1.25rem;
+    flex-grow: 0;
+  }
+
+  .campaign-header-btns {
+    width: 100%;
+    margin-top: 10px;
+    justify-content: flex-start;
+  }
+
+  .white-btn {
+    padding: 6px 12px;
+    font-size: 0.875rem;
+  }
+}

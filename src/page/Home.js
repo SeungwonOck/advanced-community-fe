@@ -2,15 +2,16 @@ import React from 'react'
 import { Container, Row, Col, Button } from 'react-bootstrap'
 import CampaignCard from '../component/CampaignCard'
 import "../style/home.style.css"
-
+import { useNavigate } from 'react-router-dom'
+import banner from "../asset/img/banner.jpeg"
 const Home = () => {
+  const navigate = useNavigate();
 
   const campaigns = [1, 2, 3, 4];
   return (
     <div>
-      <div className="home-banner text-center">
-        <h1>Title</h1>
-        <p>Subtitle</p>
+      <div className="home-banner">
+        <img src={banner} />
       </div>
 
       <Container className="mt-4">
@@ -25,7 +26,11 @@ const Home = () => {
         </Row>
 
         <div className="text-center mt-4 mb-4">
-            <Button variant="primary" size="lg">Load More</Button>
+          <Button
+            className="white-btn"
+            variant="primary"
+            size="lg"
+            onClick={() => navigate("/campaign")}>Load More</Button>
         </div>
       </Container>
     </div>

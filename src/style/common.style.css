@@ -128,7 +128,13 @@ body {
 .blue-btn {
     background-color: #465FAB;
     color: #fff;
-    border: none;
+    border: 1px solid #465FAB;
+}
+
+.blue-btn:hover {
+    background-color: #fff;
+    color: #465FAB;
+
 }
 
 .white-btn {
