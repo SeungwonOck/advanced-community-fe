@@ -90,7 +90,7 @@ const forgetPassword = (email) => async (dispatch) => {
           throw new Error(res.error)
         } else {
           dispatch({ type: types.FORGET_PASSWORD_SUCCESS, payload: res.data.data })
-          dispatch(commonUiActions.showToastMessage('Reset Code Sent to Your Email!', 'success'))
+          dispatch(commonUiActions.showToastMessage("Please type new password", 'success'))
         }
     } catch (error) {
         dispatch({ type: types.FORGET_PASSWORD_FAIL })
@@ -108,6 +108,7 @@ const setNewPassword = (userId, password, navigate) => async (dispatch) => {
           dispatch({ type: types.SET_PASSWORD_WHEN_FORGET_SUCCESS });
           dispatch(commonUiActions.showToastMessage("Password Changed!", "success"));
           navigate('/login');
+          dispatch({ type: types.SET_FIND_USER, payload: null })
         }
     } catch (error) {
         dispatch({ type: types.SET_PASSWORD_WHEN_FORGET_FAIL });
@@ -123,5 +124,5 @@ export const userActions = {
   register,
   clearError,
   forgetPassword,
-  setNewPassword
+  setNewPassword,
 };
