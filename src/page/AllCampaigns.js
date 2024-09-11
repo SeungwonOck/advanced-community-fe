@@ -15,7 +15,6 @@ const AllCampaigns = () => {
   const [filterTab, setFilterTab] = useState("latest");
   const [searchTerm, setSearchTerm] = useState("");
   const { campaignList } = useSelector((state) => state.campaign);
-  console.log("campaignList", campaignList);
   
   useEffect(() => {
     dispatch(campaignActions.getAllCampaigns());

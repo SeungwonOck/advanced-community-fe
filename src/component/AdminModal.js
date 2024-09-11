@@ -5,10 +5,8 @@ import { campaignActions } from '../action/campaignAction';
 import { useDispatch } from 'react-redux';
 
 const AdminModal = ({ campaign, showModal, setShowModal }) => {
-  console.log("campaign", campaign._id)
   const dispatch = useDispatch();
   const activateCampaign = (campaignId) => {
-    console.log("id", campaignId)
     dispatch(campaignActions.activateCampaign(campaignId))
     setShowModal(false);
   }

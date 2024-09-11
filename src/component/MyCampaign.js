@@ -14,9 +14,7 @@ const MyCampaign = () => {
   const [mode, setMode] = useState("new");
 
   const { user } = useSelector((state) => state.user);
-  console.log("user", user)
   const { campaignList } = useSelector((state) => state.campaign);
-  console.log("Campaign List", campaignList);
 
   useEffect(() => {
     dispatch(campaignActions.getAllCampaigns());

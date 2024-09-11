@@ -17,8 +17,6 @@ const Register = () => {
     role: "normal",
     policy: false,  
   })
-
-  console.log("FormData", formData)
   
   const [passwordError, setPasswordError] = useState("");
   const [policyError, setPolicyError] = useState(false);
