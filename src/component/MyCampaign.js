@@ -14,12 +14,13 @@ const MyCampaign = () => {
   const [mode, setMode] = useState("new");
 
   const { user } = useSelector((state) => state.user);
-  console.log("user", user.UserId);
-  useEffect(() => {
-    dispatch(campaignActions.getCampaignsByOwner(user.UserId))
-  }, [user])
+  console.log("user", user)
+  const { campaignList } = useSelector((state) => state.campaign);
+  console.log("Campaign List", campaignList);
 
-  const campaigns = [1, 2, 3, 4];
+  useEffect(() => {
+    dispatch(campaignActions.getAllCampaigns());
+  }, [dispatch])
 
   const openEditForm = () => {
     setMode("edit");
@@ -35,6 +36,16 @@ const MyCampaign = () => {
     setSelectedTab(tab);
     setDropdownText(text);
   }
+
+  const filteredCampaigns = campaignList.filter((campaign) => {
+    const isAuthor = user._id === campaign.author._id;
+
+    if (selectedTab === "all" && isAuthor) return true;
+    if (selectedTab === "activated" && campaign.status === "activated" && isAuthor) return true;
+    if (selectedTab === "deactivated" && campaign.status === "deactivated" && isAuthor) return true;
+    if (selectedTab === "pending" && campaign.status === "pending" && isAuthor) return true;
+    return false;
+  })
 
   return (
     <div className="campaign-container">
@@ -61,13 +72,18 @@ const MyCampaign = () => {
 
       <Container className="mt-4">
         <Row className="mt-4">
-          {campaigns.map((_, index) => (
-            <Col key={index} xs={12} sm={6} md={6} lg={4}>
-              <CampaignCard />
-            </Col>
-          ))}
+          {filteredCampaigns.length > 0 ? (
+            filteredCampaigns.map((campaign, index) => (
+              <Col key={index} xs={12} sm={12} md={6} lg={4}>
+                <CampaignCard campaign={campaign} />
+              </Col>
+            ))
+          ) : (
+            <p>There is no campaign yet.</p>
+          )}
         </Row>
       </Container>
+
         <NewCampaignDialog
           mode={mode}
           showDialog={showDialog}

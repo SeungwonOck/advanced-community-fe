@@ -5,18 +5,12 @@ import { commonUiActions } from "./commonUiAction";
 const loginWithToken = () => async (dispatch) => {
   try {
     dispatch({ type: types.TOKEN_LOGIN_REQUEST })
-
-    const token = sessionStorage.getItem("token");
-    const res = await api.get('/user/token/authentication', {
-      headers: {
-        token: `${token}`,
-      },
-    });
+    const res = await api.get('/user');
     if (res.status !== 200) {
       throw new Error('Invalid token');
     }
     else {
-      dispatch({ type: types.TOKEN_LOGIN_SUCCESS, payload: res.data })
+      dispatch({ type: types.TOKEN_LOGIN_SUCCESS, payload: res.data.data })
     }
 
   } catch (error) {
@@ -28,14 +22,14 @@ const loginWithToken = () => async (dispatch) => {
 const loginWithEmail = ({ email, password }) => async (dispatch) => {
   try {
     dispatch({ type: types.LOGIN_REQUEST })
-    const res = await api.post('/user/login', { email, password })
+    const res = await api.post('/auth/login', { email, password })
     if (res.status !== 200) {
       throw new Error(res.error)
     }
     else {
       dispatch({ type: types.LOGIN_SUCCESS, payload: res.data.data })
       sessionStorage.setItem('token', res.data.data.token)
-      dispatch(commonUiActions.showToastMessage(`Welcome ${res.data.data.user.Username}`, "success"))
+      dispatch(commonUiActions.showToastMessage(`Welcome ${res.data.data.user.userName}`, "success"))
     }
 
   } catch (error) {
@@ -49,10 +43,10 @@ const logout = () => async (dispatch) => {
   sessionStorage.removeItem('token');
 };
 
-const register = ({ email, username, password_1, password_2, role }, navigate) => async (dispatch) => {
+const register = ({ email, userName, password, role }, navigate) => async (dispatch) => {
   try {
     dispatch({ type: types.REGISTER_REQUEST })
-    const res = await api.post('/user/register', { email, username, password_1, password_2, role })
+    const res = await api.post('/user', { email, userName, password, role })
     if (res.status !== 200) {
       throw new Error(res.error)
     }
@@ -81,7 +75,7 @@ const updateUser = (userFormData) => async (dispatch) => {
     }
     else {
       dispatch({ type: types.UPDATE_USER_SUCCESS, payload: res.data.data })
-      dispatch(commonUiActions.showToastMessage("정보 수정이 완료되었습니다.", "success"))
+      dispatch(commonUiActions.showToastMessage("User Profile Updated.", "success"))
     }
   } catch (error) {
     dispatch({ type: types.UPDATE_USER_FAIL, payload: error.message })

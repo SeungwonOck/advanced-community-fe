@@ -11,10 +11,10 @@ const Register = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
-    username: "",
-    password_1: "",
-    password_2: "",
-    role: 1,
+    userName: "",
+    password: "",
+    confirmPassword: "",
+    role: "normal",
     policy: false,  
   })
 
@@ -32,9 +32,9 @@ const Register = () => {
 
   const register = (event) => {
     event.preventDefault();
-    const { email, username, password_1, password_2, role, policy} = formData;
+    const { email, userName, password, confirmPassword, role, policy} = formData;
 
-    if (password_1 !== password_2) {
+    if (password !== confirmPassword) {
       setPasswordError("Password is incorrect");
       return;
     }
@@ -52,7 +52,7 @@ const Register = () => {
 
     setPasswordError("");
     setPolicyError(false);
-    dispatch(userActions.register({ email, username, password_1, password_2, role}, navigate))
+    dispatch(userActions.register({ email, userName, password, role}, navigate))
   };
 
   const handleChange = (event) => {
@@ -61,7 +61,7 @@ const Register = () => {
     if (id === "policy") {
       setFormData({ ...formData, [id]: checked });
     } else if (id === "role") {
-      setFormData({...formData, [id]: checked ? 2 : 1 });
+      setFormData({...formData, [id]: checked ? "business" : "normal" });
     }
     else {
       setFormData({ ...formData, [id]: value });
@@ -90,7 +90,7 @@ const Register = () => {
                 <Form.Control
                   className="login-form-input"
                   type="text"
-                  id="username"
+                  id="userName"
                   placeholder="ex)Alex"
                   onChange={handleChange}
                   required
@@ -101,7 +101,7 @@ const Register = () => {
                 <Form.Control
                   className="login-form-input"
                   type="password"
-                  id="password_1"
+                  id="password"
                   placeholder="Please enter your password"
                   onChange={handleChange}
                   required
@@ -112,7 +112,7 @@ const Register = () => {
                 <Form.Control
                   className="login-form-input"
                   type="password"
-                  id="password_2"
+                  id="confirmPassword"
                   placeholder="Please re-enter your password"
                   onChange={handleChange}
                   required
@@ -128,7 +128,7 @@ const Register = () => {
                   label="Business - Application as a business"
                   id="role"
                   onChange={handleChange}
-                  checked={formData.role === 2}
+                  checked={formData.role === "business"}
                 />
               </Form.Group>
               <Form.Group className="mb-3">

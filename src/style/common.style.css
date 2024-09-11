@@ -134,7 +134,16 @@ body {
 .blue-btn:hover {
     background-color: #fff;
     color: #465FAB;
+}
 
+.black-btn {
+    background-color: black;
+    color: #fff;
+    transition: opacity 0.2s ease;
+}
+
+.black-btn:hover {
+    opacity: 0.5;
 }
 
 .white-btn {
@@ -154,6 +163,10 @@ body {
 
 .red {
     background-color: #EB5757 !important;
+}
+
+.red-color {
+    color: #EB5757 !important;
 }
 
 .cur-point {

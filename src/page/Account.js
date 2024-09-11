@@ -27,7 +27,7 @@ const AccountPage = () => {
         <h2>Campaign Management</h2>
         <ul>
           <li onClick={() => setTab("myCampaigns")}>My Campaigns</li>
-          {user && user.RoleId === 3 ? 
+          {user && user.role === "admin" ? 
           <li onClick={() => setTab("manageCampaigns")}>Manage Campaigns</li> : ""}
         </ul>
       </div>

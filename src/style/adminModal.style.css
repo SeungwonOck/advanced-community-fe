@@ -1,0 +1,40 @@
+.admin-modal .modal-content {
+  border-radius: 15px;
+  padding: 20px;
+  background-color: #fff;
+  border: none;
+}
+
+.admin-modal .modal-header {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.admin-modal .modal-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.admin-modal .modal-body {
+  padding: 20px 0;
+}
+
+.admin-modal .modal-body p {
+  margin-bottom: 10px;
+  font-size: 1rem;
+  color: #333;
+}
+
+.admin-modal .modal-footer {
+  border-top: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+.admin-modal .admin-btn {
+  width: 100px;
+  height: 40px;
+  font-size: 1rem;
+  border-radius: 5px;
+}
+

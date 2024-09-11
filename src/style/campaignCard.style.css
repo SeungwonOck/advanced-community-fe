@@ -1,3 +1,11 @@
+.card {
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: scale(0.95);
+}
+
 .image-container {
   position: relative;
   padding: 10px;
@@ -7,7 +15,7 @@
 
 .campaign-image {
   width: 100%;
-  height: auto;
+  height: 200px;
   object-fit: cover;
   border-radius: 8px;
   max-height: 150px;
@@ -37,4 +45,36 @@
 
 .card-footer .me-4 {
   margin-right: 0.75rem;
+}
+
+@media (max-width: 576px) {
+  .text-muted {
+      font-size: 0.75rem;
+    }
+  
+    .text-danger,
+    .fa-comment {
+      font-size: 0.8rem;
+    }
+  
+    .me-1 {
+      margin-right: 0.4rem;
+    }
+  
+    .me-4 {
+      margin-right: 0.8rem;
+    }
+  
+    .text-muted.d-flex {
+      font-size: 0.7rem;
+    }
+  
+    .card-footer {
+      padding: 0.4rem;
+    }
+  
+    .badge {
+      font-size: 0.7rem;
+      padding: 0.2rem 0.4rem;
+    }
 }

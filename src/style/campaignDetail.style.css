@@ -1,0 +1,223 @@
+.campaign-detail {
+  width: 60%;
+  margin: 20px auto;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.campaign-header {
+  position: relative;
+  text-align: center;
+}
+
+.campaign-image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.campaign-role {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #ffd700;
+  /* Gold color for 'B' */
+  color: #fff;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 20px;
+  font-size: 18px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.campaign-content {
+  padding: 20px 0;
+}
+
+.campaign-content h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.campaign-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.author-details {
+  display: flex;
+  align-items: center;
+}
+
+.author-profile-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.author-name {
+  font-weight: bold;
+  margin: 0;
+}
+
+.posted-date {
+  color: #888;
+  font-size: 12px;
+  margin: 0;
+}
+
+.likes {
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+}
+
+.likes span {
+  margin-right: 5px;
+  font-size: 20px;
+}
+
+.campaign-description {
+  margin-top: 20px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.comments-section {
+  margin-top: 40px;
+}
+
+.comments-section h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.comment {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.comment-header {
+  display: flex;
+  justify-content: space-between;
+  /* userName + profileImage를 왼쪽에, date를 오른쪽에 배치 */
+  align-items: center;
+  margin-bottom: 10px;
+  /* Comment content와의 간격 */
+}
+
+.comment-author {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.comment-author-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.comment-author-name {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.comment-date {
+  font-size: 12px;
+  color: #888;
+  white-space: nowrap;
+  /* 긴 날짜일 경우 줄바꿈 방지 */
+}
+
+.comment-text {
+  font-size: 14px;
+  line-height: 1.5;
+  margin-top: 5px;
+}
+
+.add-comment {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  gap: 10px;
+  flex-direction: column;
+  width: 100%;
+}
+
+.comment-textarea {
+  width: 100%;
+  max-width: 600px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  resize: vertical;
+  min-height: 100px;
+}
+
+.post-comment-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+  .campaign-detail {
+    width: 90%;
+  }
+
+  .campaign-content h1 {
+    font-size: 24px;
+  }
+
+  .likes {
+    margin-top: 10px;
+  }
+
+  .add-comment {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .post-comment-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .campaign-detail {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .campaign-header img {
+    width: 100%;
+    height: auto;
+  }
+
+  .comment-author-image {
+    width: 30px;
+    height: 30px;
+  }
+
+  .campaign-content h1 {
+    font-size: 20px;
+  }
+}

@@ -55,3 +55,42 @@ h2 {
   height: 64px;
   object-fit: cover;
 }
+
+@media (max-width: 576px) {
+  .account-detail-container {
+    padding: 10px;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+  }
+
+  .avatar-upload {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .avatar-upload .avatar-preview {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 10px;
+  }
+
+  .avatar-upload button {
+    width: 100%;
+    font-size: 0.875rem;
+    padding: 8px;
+  }
+
+  .form-group {
+    margin-bottom: 1rem;
+  }
+
+  .form-control {
+    font-size: 0.875rem;
+  }
+
+  .blue-btn {
+    font-size: 0.9rem;
+  }
+}

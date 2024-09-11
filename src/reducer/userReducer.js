@@ -3,6 +3,7 @@ const initialState = {
   loading: false,
   user: null,
   error: '',
+  findUser: null,
 };
 
 function userReducer(state = initialState, action) {
@@ -17,9 +18,8 @@ function userReducer(state = initialState, action) {
       return { ...state, loading: true }
     case types.LOGIN_SUCCESS:
     case types.UPDATE_USER_SUCCESS:
-        return { ...state, loading: false, user: payload.user, error: "" }
     case types.TOKEN_LOGIN_SUCCESS:
-        return { ...state, loading: false, user: payload.data, error: "" }
+        return { ...state, loading: false, user: payload.user, error: "" }
     case types.FORGET_PASSWORD_SUCCESS:
       return { ...state, loading: false, findUser: payload, error: '' }
     case types.REGISTER_SUCCESS:
