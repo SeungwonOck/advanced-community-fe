@@ -8,12 +8,6 @@
   border-bottom: 2px solid #eee;
 }
 
-.home-banner h1 {
-  font-size: 2.5rem;
-  font-weight: 700;
-}
-
-.home-banner p {
-  font-size: 1.25rem;
-  color: #6c757d;
+.home-banner > img {
+  width: 100%;
 }
