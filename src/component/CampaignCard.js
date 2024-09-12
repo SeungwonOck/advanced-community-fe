@@ -15,6 +15,12 @@ const CampaignCard = ({ campaign }) => {
   const [showModal, setShowModal] = useState(false);
   const campaignDefaultImage = "https://info.mssmedia.com/hubfs/Misc%20Images/60255e7341de62c988dd08aa_DigitalAdvertising.jpg"
 
+  const handleBadgeClick = (e) => {
+    e.stopPropagation();
+    if (user.role === "admin" && campaign.status === "pending") {
+      setShowModal(true);
+    }
+  };
   return (
     <div>
       <Card className="mb-4 shadow-sm cur-point" onClick={() => navigate(`/campaign/${campaign._id}`)}>
@@ -54,7 +60,7 @@ const CampaignCard = ({ campaign }) => {
               campaign.status === "pending" ? "warning" :
               "danger"
             }
-              onClick={user.role === "admin" && campaign.status === "pending" ? () => setShowModal(true) : undefined}
+              onClick={handleBadgeClick}
               style={{ cursor: (user.role === "admin" && campaign.status === "pending") ? "pointer" : "default" }}
             >
               {campaign.status === "activated" ? "Activated" : 
