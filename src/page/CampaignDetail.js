@@ -72,7 +72,7 @@ const CampaignDetail = () => {
                         </div>
                     </div>
 
-                    <div className="likes" onClick={() => toggleLike(selectedCampaign._id)}>
+                    <div className="likes cur-point" onClick={() => toggleLike(selectedCampaign._id)}>
                         <FontAwesomeIcon icon={selectedCampaign?.userLikes.some(like => like._id === user._id) ? fullHeart : emptyHeart} className="red-color mr-1"/> 
                         <span>{selectedCampaign?.likes}</span>
                     </div>

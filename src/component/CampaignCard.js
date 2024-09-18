@@ -21,6 +21,10 @@ const CampaignCard = ({ campaign }) => {
       setShowModal(true);
     }
   };
+
+  const getShortDescription = (description) => {
+    return description.length > 100 ? description.substring(0, 100) + "..." : description;
+  }
   return (
     <div>
       <Card className="mb-4 shadow-sm cur-point" onClick={() => navigate(`/campaign/${campaign._id}`)}>
@@ -41,7 +45,7 @@ const CampaignCard = ({ campaign }) => {
             </small>
           </Card.Text>
           <Card.Text>
-            {campaign.description}
+            {getShortDescription(campaign.description)}
           </Card.Text>
         </Card.Body>
         <Card.Footer className="text-muted d-flex">
