@@ -33,7 +33,7 @@ const Footer = () => {
               <li onClick={()=> {handleNavigation("/")}}>
                 Home
               </li>
-              <li onClick={() => { handleNavigation("/campaign") }}>
+              <li onClick={() => {handleNavigation("/campaign") }}>
                 Campaigns
               </li>
               <li>
