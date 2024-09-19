@@ -30,8 +30,15 @@ const Register = () => {
 
   const register = (event) => {
     event.preventDefault();
-    const { email, userName, password, confirmPassword, role, policy} = formData;
+    const { email, userName, password, confirmPassword, role, policy } = formData;
+    
+    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
+    if (!passwordRegex.test(password)) {
+      setPasswordError("Password must be at least 8 characters long and include letters, numbers, and special characters.")
+      return;
+    }
+    
     if (password !== confirmPassword) {
       setPasswordError("Password is incorrect");
       return;

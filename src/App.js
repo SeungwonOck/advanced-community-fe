@@ -7,6 +7,7 @@ import ToastMessage from './component/ToastMessage';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { userActions } from './action/userAction';
+import Footer from './component/Footer';
 
 function App() {
   const dispatch = useDispatch();
@@ -20,6 +21,7 @@ function App() {
       <ToastMessage />
       <Navbar user={user} />
       <AppRouter />
+      <Footer />
     </>
   );
 }
