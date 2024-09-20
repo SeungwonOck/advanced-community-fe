@@ -30,9 +30,11 @@ const CampaignCard = ({ campaign }) => {
       <Card className="mb-4 shadow-sm cur-point" onClick={() => navigate(`/campaign/${campaign._id}`)}>
         <div className="image-container">
           <Card.Img className="campaign-image" variant="top" src={campaign.image || campaignDefaultImage} alt="Campaign Image" />
-          <Badge className="badge-overlay" bg="warning">
-            {campaign.author.role === "normal" ? "N" : campaign.author.role === "business" ? "B" : "A"}
-          </Badge>
+          {campaign.author.role === "business" && (
+            <Badge className="badge-overlay" bg="warning">
+              B
+            </Badge>
+          )}
         </div>
         <Card.Body>
           <Card.Title>{campaign.title}</Card.Title>
