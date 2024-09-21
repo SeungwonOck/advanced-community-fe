@@ -79,6 +79,7 @@ const updateUser = (userFormData) => async (dispatch) => {
     }
   } catch (error) {
     dispatch({ type: types.UPDATE_USER_FAIL, payload: error.message })
+    dispatch(commonUiActions.showToastMessage(error.message, "error"))
   }
 };
 

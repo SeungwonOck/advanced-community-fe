@@ -9,8 +9,12 @@ const AccountDetails = () => {
   const dispatch = useDispatch();
   const { user, loading } = useSelector((state) => state.user);
   const [formData, setFormData] = useState({
+    userName: "",
+    email: "",
     profileImage: "",
   })
+  const [userNameError, setUserNameError] = useState("");
+  const [emailError, setEmailError] = useState("");
 
   const uploadImage = (url) => {
     setFormData({...formData, profileImage: url });
@@ -18,8 +22,41 @@ const AccountDetails = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    setUserNameError("");
+    setEmailError("");
+
+    const { userName, email } = formData;
+
+    let hasError = false;
+
+    if (userName.trim().length < 3) {
+      setUserNameError("Username must be at least 3 characters long");
+      hasError = true;
+    }
+
+    const userNameRegex = /^[A-Za-z0-9_]+$/;
+    if (!userNameRegex.test(userName)) {
+      setUserNameError("Username can only contain letters, numbers, and underscores");
+      hasError = true;
+    }
+
+    if (!email.trim()) {
+      setEmailError("Email field cannot be empty");
+      hasError = true;
+    }
+
+    if (hasError) {
+      return;
+    }
+
     dispatch(userActions.updateUser({ ...formData }));
     setFormData({ ...formData, profileImage: "" });
+  }
+
+  const handleChange = (event) => {
+    const { id, value} = event.target;
+    setFormData({ ...formData, [id]: value });
   }
 
   if (loading) {
@@ -38,20 +75,28 @@ const AccountDetails = () => {
           <Form.Label>Username</Form.Label>
           <Form.Control
             type="text"
-            value={user.userName}
-            placeholder="Enter your username"
-            readOnly
+            id="userName"
+            onChange={handleChange}
+            placeholder={user.userName}
+            isInvalid={userNameError}
           />
+          <Form.Control.Feedback type="invalid">
+            {userNameError}
+          </Form.Control.Feedback>
         </Form.Group>
 
         <Form.Group controlId="email" className="mb-2">
           <Form.Label>Email</Form.Label>
           <Form.Control
             type="email"
-            value={user.email}
-            placeholder="Enter your email"
-            readOnly
+            id="email"
+            onChange={handleChange}
+            placeholder={user.email}
+            isInvalid={emailError}
           />
+          <Form.Control.Feedback type="invalid">
+            {emailError}
+          </Form.Control.Feedback>
         </Form.Group>
 
         <Form.Group controlId="roleId" className="mb-2">
@@ -59,7 +104,6 @@ const AccountDetails = () => {
           <Form.Control
             type="text"
             value={user.role}
-            placeholder="Enter your email"
             readOnly
           />
         </Form.Group>
@@ -68,7 +112,7 @@ const AccountDetails = () => {
           <Row>
             <Col xs={3}>
               <Image
-                src={user.profileImage}
+                src={user.profileImage || noImg}
                 roundedCircle
                 className="avatar-preview"
               />
