@@ -18,6 +18,7 @@ const Register = () => {
     policy: false,  
   })
   
+  const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [policyError, setPolicyError] = useState(false);
   const { error } = useSelector((state) => state.user);
@@ -33,12 +34,23 @@ const Register = () => {
     const { email, userName, password, confirmPassword, role, policy } = formData;
     
     const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.(com|net|org|edu)$/;
+
+    if (email.length > 50) {
+      setEmailError("Email Address is too long");
+      return
+    }
+
+    if (!emailRegex.test(email)) {
+      setEmailError("Invalid Email Format (Missing Domain)");
+      return
+    }
 
     if (!passwordRegex.test(password)) {
       setPasswordError("Password must be at least 8 characters long and include letters, numbers, and special characters.")
       return;
     }
-    
+
     if (password !== confirmPassword) {
       setPasswordError("Password is incorrect");
       return;
@@ -55,6 +67,7 @@ const Register = () => {
       setPolicyError(false);
     }
 
+    setEmailError("");
     setPasswordError("");
     setPolicyError(false);
     dispatch(userActions.register({ email, userName, password, role}, navigate))
@@ -88,7 +101,11 @@ const Register = () => {
                   placeholder="Please enter your email address"
                   onChange={handleChange}
                   required
+                  isInvalid={emailError}
                 />
+                <Form.Control.Feedback type="invalid">
+                  {emailError}
+                </Form.Control.Feedback>
               </Form.Group>
               <Form.Group className="mb-3">
                 <Form.Label className="login-form-label">UserName<a style={{ color: "#28A745" }}>*</a></Form.Label>
